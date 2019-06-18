@@ -106,7 +106,7 @@ describe('BBD Tests', () => {
 			console = new Console({ stdout: streams['out'], stderr: streams['err'] });
 			console = level(console, 'off');
 			console[l]('test-trace');
-			expect(streams[tracelvl[l]].toString()).to.contain(`test-trace\n`);
+			expect(streams[tracelvl[l]].toString()).to.contain(``);
 			done();
 		});
 	});
