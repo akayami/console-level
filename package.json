@@ -1,0 +1,23 @@
+{
+  "name": "@akayami/console-level",
+  "version": "0.0.1",
+  "description": "A filter allowing setting of log level for console object",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "node_modules/.bin/eslint --fix .",
+    "test-cov": "node_modules/.bin/nyc mocha ./test/*.js",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | node_modules/.bin/coveralls"
+  },
+  "author": "Tomasz Rakowski",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.4",
+    "eslint": "^5.16.0",
+    "memorystream": "^0.3.1",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "streamtest": "^1.2.4"
+  }
+}
