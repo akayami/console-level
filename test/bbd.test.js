@@ -54,6 +54,22 @@ describe('BBD Tests', () => {
 		});
 	});
 	
+	Object.keys(levels).forEach((l) => {
+//		process.stdout.write(l);
+		it(`Testing level ${l}`, done => {
+			let streams = {};
+			
+			streams['err'] = new MemoryStream(null, {readable: false});
+			streams['out'] = new MemoryStream(null, {readable: false});
+			
+			console = new Console({ stdout: streams['out'], stderr: streams['err'] });
+			console = level(console, 'off');
+			console[l]('test');
+			expect(streams[levels[l]].toString()).to.equal(``);
+			done();
+		});
+	});
+	
 	let tracelvl = {
 		// 'debug': 'out',
 		// 'info': 'out',
@@ -73,6 +89,22 @@ describe('BBD Tests', () => {
 
 			console = new Console({ stdout: streams['out'], stderr: streams['err'] });
 			console = level(console, l);
+			console[l]('test-trace');
+			expect(streams[tracelvl[l]].toString()).to.contain(`test-trace\n`);
+			done();
+		});
+	});
+	
+	Object.keys(tracelvl).forEach((l) => {
+//		process.stdout.write(l);
+		it(`Testing level ${l}`, done => {
+			let streams = {};
+			
+			streams['err'] = new MemoryStream(null, {readable: false});
+			streams['out'] = new MemoryStream(null, {readable: false});
+			
+			console = new Console({ stdout: streams['out'], stderr: streams['err'] });
+			console = level(console, 'off');
 			console[l]('test-trace');
 			expect(streams[tracelvl[l]].toString()).to.contain(`test-trace\n`);
 			done();
