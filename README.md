@@ -5,6 +5,7 @@ A filter allowing setting of log level for console object
 ## Usage
 ```javascript
 const { Console } = require('console');
+const level = require('@akayami/console-level');
 console = new Console({ stdout: process.stdout, stderr: process.stderr });
 // Make console output only warns and bellow
 console = level(console, 'warn');
@@ -17,20 +18,20 @@ console.level('warn');					// Switches log level back to warn
 
 ### Levels
 ```javascript
-const stack = {
-	'debug': 20, // stdout
-	'info': 30, // stdout
-	'log': 30, // stdout
-	'warn': 40, // stderr
-	'error': 50, // stderr
-	'trace': 60 // stderr
-};
+'debug': 20,
+'info': 30,
+'log': 30,
+'warn': 40,
+'error': 50,
+'trace': 60,
+'off': 1000
 ```
 
 ### Another usage example
 
 ```javascript
 const { Console } = require('console');
+const level = require('@akayami/console-level');
 console = new Console({ stdout: process.stdout, stderr: process.stderr });
 // Make console output only warns and bellow
 console = level(console, (process.env.dev ? 'debug' : 'warn'));
